@@ -61,6 +61,7 @@ plotScatter <- function(object,
 
 
 ## plot the correlation for any given viewpoint and condition
+#' @importFrom LSD heatscatter
 plotSmoothScatter <- function(viewpoint, rep, ftc, ...){
   filter = apply(ftc, 1, sum) == 0
 

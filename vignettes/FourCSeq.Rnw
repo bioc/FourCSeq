@@ -379,6 +379,7 @@ functions.
 % @
 
 <<>>=
+library(SummarizedExperiment)
 fc
 assays(fc)
 head(assay(fc, "counts"))
@@ -462,7 +463,7 @@ additional information added by the \Rfunction{getZScores} function
 We take a look at the distribution of z-scores, which are stored in the 
 \Robject{assay} "zScores" of the \Robject{FourC} object.
 <<zScoreDistribution, eval=TRUE, cache=TRUE, fig.show='hold', dependson=c("CalculateZScores")>>=
-zScore <- assay(fcf, "zScore")
+zScore <- SummarizedExperiment::assay(fcf, "zScore")
 
 hist(zScore[,"ap_MESO_68h_1"], breaks=100)
 hist(zScore[,"ap_MESO_68h_2"], breaks=100)
@@ -501,7 +502,7 @@ interaction has been called for a fragment or not.
 
 <<addPeaks, eval=TRUE, cache=TRUE, fig.keep='none', dependson=c("CalculateZScores")>>=
 fcf <- addPeaks(fcf, zScoreThresh=3, fdrThresh=0.01)
-head(assay(fcf, "peaks"))
+head(SummarizedExperiment::assay(fcf, "peaks"))
 @
 
 

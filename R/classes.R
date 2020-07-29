@@ -60,6 +60,9 @@ setValidity( "FourC", function( object ) {
 } )
 
 #' @rdname FourC
+#' @param object Object of class \code{FourC}
+#' @param \dots Additional arguments
+#' @param verbose Logical indicating volumn of information shown
 #' @export 
 setMethod("updateObject", "FourC",
     function(object, ..., verbose=FALSE)
@@ -78,6 +81,7 @@ setMethod("updateObject", "FourC",
 ##' @import reshape2 fda GenomicAlignments Matrix rtracklayer LSD
 ##' 
 ##' @importFrom gtools combinations
+##' @importFrom methods callNextMethod new 
 ##'  
 ##' 
 ##' @examples

@@ -118,7 +118,7 @@ getReferenceSeq <- function (object){
 ##' fc <- addViewpointFrags(fc)
 ##' fc
 ##' 
-##' 
+##' @importFrom utils write.table
 ##' @export
 findViewpointFragments <- function(object){
   stopifnot(class(object)=="FourC")
@@ -628,11 +628,13 @@ countFragmentOverlaps <- function(object, trim=0, minMapq=0, shift=0){
                                           "mappingRatio")
   mcols(colData(object))[idx,] <- metaDataFrame
   
-  assays(object) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
+  assays(object, withDimnames = FALSE) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
                                countsRightFragmentEnd=countsRightFragmentEnd)
   
-  assays(object) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
-                               countsRightFragmentEnd=countsRightFragmentEnd)
+  ## Why is this line repeated?  I'm not sure it does anything useful so I'm commenting it out.
+  ## 29-07-2020 - Mike L Smith
+  #assays(object) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
+  #                             countsRightFragmentEnd=countsRightFragmentEnd)
   object
 }
 
@@ -744,7 +746,7 @@ countFragmentOverlapsSecondCutter <- function(object, extend=TRUE, minMapq=0, sh
                                           "mappingRatio")
   mcols(colData(object))[idx,] <- metaDataFrame
   
-  assays(object) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
+  assays(object, withDimnames = FALSE) <- SimpleList(countsLeftFragmentEnd=countsLeftFragmentEnd, 
                                countsRightFragmentEnd=countsRightFragmentEnd)
   object
 }
