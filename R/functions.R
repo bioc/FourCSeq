@@ -287,7 +287,7 @@ getDistAroundVp <- function(vp, vpData, fragData){
 getDifferences <- function(object,
                            referenceCondition=NULL,
                            fitNormFactors=TRUE){      
-  stopifnot(class(object)=="FourC")
+  stopifnot(is(object, "FourC"))
   
   if( ! c("counts") %in% names(assays(object)))
     stop("No assay 'counts' found. Use combineFragEnds first.")
@@ -323,7 +323,7 @@ getDifferences <- function(object,
   ## fit normalizationFactors/estimate dispersions
   if(fitNormFactors) {
     object <- try(getNormalizationFactors(object))
-    if(class(object) == "try-error") break     
+    if(is(object, "try-error")) { stop() }     
   }
   
   ## test for differences  
